@@ -11,23 +11,22 @@ datasource db {
 }
 
 model Dog {
-  id                 String      @id @default(cuid())
-  name               String      @unique
-  min_height         Int
-  max_height         Int
-  min_weight         Int
-  max_weight         Int
-  min_life_span      Int
-  max_life_span      Int
-  image              String
-  origin             String?
-  dogTemperament     Temperament @relation(fields: [dogTemperamentName], references: [name])
-  dogTemperamentName String
+  id            String        @id @default(cuid())
+  name          String        @unique
+  min_height    Int
+  max_height    Int
+  min_weight    Int
+  max_weight    Int
+  min_life_span Int
+  max_life_span Int
+  image         String
+  origin        String?
+  temperament   Temperament[]
 }
 
 model Temperament {
-  name String @unique
-  Dog  Dog[]
+  name String @id
+  dogs Dog[]
 }
 
 model User {
